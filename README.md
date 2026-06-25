@@ -5,8 +5,7 @@ my query is finding top 100 active clients by order count in product categories
 
 
 
-
-#-- non-optimized query--
+-- non-optimized query--
 explain analyze
 select
     c.client_id,
@@ -47,7 +46,7 @@ create index if not exists idx_clients_status on clients(status);
 
 
 
-#--optimized query
+--optimized query
 explain analyze
 with filtered_orders as (
     select
