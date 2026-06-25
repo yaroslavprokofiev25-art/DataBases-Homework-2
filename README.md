@@ -47,6 +47,8 @@ create index if not exists idx_clients_status on clients(status);
 
 
 --optimized query
+set enable_seqscan = off;
+
 explain analyze
 with filtered_orders as (
     select
@@ -79,6 +81,8 @@ order by
     orders_count desc,
     total_quantity desc
 limit 100;
+
+reset enable_seqscan;
 
 
 # Actual time before optimisation is 7.832 ms
